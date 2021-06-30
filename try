@@ -1,0 +1,25 @@
+
+[1mFrom:[0m /mnt/c/code/new/graphql/toys_app-gql/app/graphql/mutations/login_user.rb:14 Mutations::LoginUser#resolve:
+
+    [1;34m10[0m: [32mdef[0m [1;34mresolve[0m([35mcredentials[0m: [1;36mnil[0m)
+    [1;34m11[0m:   [1;34m# # basic validation[0m
+    [1;34m12[0m:   [1;34m# return unless credentials[0m
+    [1;34m13[0m:   binding.pry
+ => [1;34m14[0m:   user = [1;34;4mUser[0m.find_by([35musername[0m: credentials[[33m:username[0m])
+    [1;34m15[0m: 
+    [1;34m16[0m:   [1;34m# # ensures we have the correct user[0m
+    [1;34m17[0m:   [1;34m# return unless user[0m
+    [1;34m18[0m:   [1;34m# return unless user.authenticate(credentials[:password])[0m
+    [1;34m19[0m:   user.authenticate(credentials[[33m:password[0m])
+    [1;34m20[0m: 
+    [1;34m21[0m:   [1;34m# use Ruby on Rails - ActiveSupport::MessageEncryptor, to build a token[0m
+    [1;34m22[0m:   crypt = [1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m.new([1;34;4mRails[0m.application.credentials.secret_key_base.byteslice([1;34m0[0m..[1;34m31[0m))
+    [1;34m23[0m:   token = crypt.encrypt_and_sign([31m[1;31m"[0m[31muser-id:#{user.id}[0m[31m[1;31m"[0m[31m[0m)
+    [1;34m24[0m: 
+    [1;34m25[0m:   context[[33m:session[0m][[33m:token[0m] = token
+    [1;34m26[0m:   try = context[[33m:session[0m][[33m:token[0m]
+    [1;34m27[0m:   binding.pry
+    [1;34m28[0m: 
+    [1;34m29[0m:   { [35muser[0m: user, [35mtoken[0m: token }
+    [1;34m30[0m: [32mend[0m
+
